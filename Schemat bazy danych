@@ -1,0 +1,35 @@
+Schemat bazy danych
+Liga
+•	Id_ligi
+•	Nazwa
+•	Opis
+Drużyna
+•	Id_druzyny
+•	Id_ligi (Klucz obcy)
+•	Nazwa
+•	Opis
+•	Punkty
+•	Bramki_strzelone
+•	Bramki_stracone
+•	Wygrane
+•	Przegrane
+•	Remisy
+Zawodnik
+•	Id_zawodnika
+•	Login
+•	Hasło
+•	Imie
+•	Nazwisko
+•	Data_urodzenia
+•	Id_druzyny (klucz obcy)
+•	Narodowość
+•	Pozycja
+Mecz
+•	Id_meczu
+•	Id_ligi (klucz obcy)
+•	Id_druzyny1 (klucz obcy)
+•	Id_druzyny2 (klucz obcy)
+•	Data
+•	Wynik_gospodarzy
+•	Wynik_gości
+•	Miejsce_meczu
