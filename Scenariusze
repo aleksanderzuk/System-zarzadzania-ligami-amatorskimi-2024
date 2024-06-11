@@ -1,0 +1,59 @@
+Scenariusze
+Tworzenie ligi 
+•	Administrator wybiera opcję ‘Stwórz ligę’ 
+•	Administrator wypełnia formularz dotyczący nazwy ligi oraz ilości drużyn
+•	System tworzy ligę i zapisuje informację w bazie danych
+
+Tworzenie drużyny
+•	Administrator wybiera opcję ‘Stwórz drużynę’
+•	Administrator wypełnia formularz dotyczący nazwy drużyny, ewentualnych informacji o drużynie
+•	System tworzy drużynę i zapisuje informację w bazie danych.
+
+Przypisywanie drużyny do ligi
+•	Administrator otwiera tabelę stworzonej ligi
+•	Administrator wybiera opcję ‘Dodaj drużynę do ligi’
+•	Administrator, spośród dostępnych drużyn, nieprzypisanych do żadnej innej ligi, wybiera drużynę do dodania
+•	System dodaje drużynę do ligi i zapisuje informację w bazie danych
+
+Przypisywanie zawodników do drużyny
+•	Administrator otwiera stronę konkretnej ligi
+•	Administrator otwiera stronę konkretnej drużyny
+•	Administrator wybiera opcję ‘Przypisz zawodnika’
+•	Administrator, spośród dostępnych zawodników, nieprzypisanych do żadnej innej drużyny, wybiera zawodnika do dodania do drużyny.
+•	System przypisuje zawodnika do drużyny i zapisuje informację w bazie danych.
+
+Zarządzanie profilami zawodnikiem
+•	Administrator otwiera stronę konkretnego zawodnikiem
+•	Administrator wybiera co chce zrobić z zawodnikiem
+a)	Usunięcie profilu zawodnika
+    •	Administrator wybiera opcję ‘Usun zawodnika’
+    •	System zatwierdza informację i usuwa profil zawodnika z bazy danych
+
+b)	Edycja profilu zawodnika
+    •	Administrator wybiera opcję ‘Edytuj zawodnika’
+    •	Administrator wypełnia pola formularza edycji zawodnika
+    •	System zatwierdza informację i edytuje rekordy na temat zawodnika  w bazie danych.
+
+Zarządzanie swoim profilem
+•	Zawodnik otwiera panel mój profil
+•	Zawodnik wybiera co chce zrobić ze swoim profilem
+a)	Usunięcie profilu
+    •	Zawodnik wybiera opcję ‘Usun profil’
+    •	System zatwierdza informację i usuwa profil zawodnika z bazy danych
+
+b)	Edycja profilu 
+    •	Zawodnik wybiera opcję ‘Edytuj profil’
+    •	Zawodnik wypełnia pola formularza edycji profilu
+    •	System zatwierdza informację i edytuje rekordy na temat zawodnika  w bazie danych.
+
+Dodawanie meczów
+•	Administrator otwiera stronę konkretnej ligi
+•	Administrator wybiera opcję ‘Dodaj mecz’
+•	Administrator wypełnia formularz z informacjami na temat drużyn meczu oraz czasu
+•	System sprawdza poprawność danych i zapisuje je do bazy danych
+
+Edytowanie meczów
+•	Administrator otwiera harmonogram meczów ligi
+•	Administrator wybiera opcję ‘Edytuj mecz’ konkretnego meczu
+•	Administrator wypełnia formularz zawierający informację na temat wyniku, strzelonych bramek, czasu meczu i drużyn.
+•	System sprawdza poprawność danych i zapisuje je do bazy danych
