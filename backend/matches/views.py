@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from .models import Match
+from .serializers import MatchSerializer
 
-# Create your views here.
+class MatchViewSet(viewsets.ModelViewSet):
+    queryset = Match.objects.all()
+    serializer_class = MatchSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

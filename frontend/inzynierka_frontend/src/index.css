@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background: radial-gradient(lightblue, aquamarine);
+  min-height: 50vh;
+}
+
+@media only screen and (max-width: 499px ) {
+  form {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 500px ) {
+  form {
+    width: 63%;
+    margin: 0 auto;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.marg{
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+.op{
+  background-color: rgba(0,0,0,0.25);
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.narrow{
+  width:73% !important;
+  margin: 0 auto;
+}
+
+label.invalid{
+  color: #f87171;
+}
+input.invalid{
+  color: #ef4444;
+  border-color: #f73f3f;
+  background-color: #fed2d2;
+}
+
+input.invalid:focus{
+  background-color: #fed2d2;
+  border-color: #f73f3f;
+  
+}
+
+.log{
+  border: none; 
+  border-radius: .5rem;
+  font-size: 1.1rem;
+  background: radial-gradient(rgb(81, 204, 132), darkturquoise);
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2px 6px 2px 6px;
+
+}
+
+
+.navbar{
+  background-color: #008080;
+  border: none;
+  box-shadow:0 4px 8px 0 #008080, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2px 6px 2px 6px; 
+}
+
+.btn{
+  color: white !important;
+  font-size: 1.2rem !important;
+  border:none !important;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover{
+  background-color: rgba(0,0,0,0.1) !important;
+}
+
+.footer {
+  position: fixed; 
+  bottom: 0;  
+  left: 50%;
+}
+
+.pos-fix{
+  margin-left:40px;
+}
+
