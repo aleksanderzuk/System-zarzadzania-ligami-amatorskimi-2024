@@ -21,7 +21,7 @@ export default function Teams() {
                                     <strong>Liga:</strong> {team.league ? team.league.name : "Nieznana liga"}<br />
                                     <strong>Liczba zawodników:</strong> {team.players ? team.players.length : 0}
                                 </p>
-                                <a href={`/team/${team.id}`} className="btn btn-primary">Zobacz szczegóły</a>
+                                <a href={`/teams/${team.id}`} className="btn btn-primary">Zobacz szczegóły</a>
                             </div>
                         </div>
                     ))

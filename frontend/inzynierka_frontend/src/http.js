@@ -39,8 +39,23 @@ export async function register(username, password, name, surname, position){
     return resData;
 }
 
+
+// funkcja do ściągania całkowitego kontentu, do np. wszystkich lig
 export async function getContent(page, query){
     const url = `http://127.0.0.1:8000/api/${page}/?name=${query}`;
+    const response = await fetch(url);
+    const resData = await response.json();
+
+    if(!response.ok){
+        throw new Error('Failed to fetch data');
+    }
+    return resData;
+}
+
+// funkcja do ściągania pojedynczej zawartości np. ligi po id
+export async function getExactContent(page, id){
+    const url = `http://127.0.0.1:8000/api/${page}/${id}`;
+    
     const response = await fetch(url);
     const resData = await response.json();
 

@@ -13,7 +13,7 @@ export default function Profile() {
             let username = Cookies.get('username'); // Pobierz nazwę użytkownika z cookies
 
             try {
-                let results = await getContent('users', username);
+                let results = await getContent('players', username);
                 setData(results); // Ustaw dane użytkownika
             } catch (error) {
                 console.error('Błąd przy ściąganiu danych', error);
@@ -25,14 +25,13 @@ export default function Profile() {
     }, []);
     
     
-    console.log(data[0].username);
-    console.log('shit');
+    
     
     return (
         <>
             <h1 className="text-center my-4">Profil</h1>
-            <p className="text-center">Witaj, {data[0].username}!</p>
-            {/* Tutaj możesz dodać więcej informacji o użytkowniku */}
+            <p className="text-center">Witaj, {data[0]?.username || 'Gościu'}!</p>
+            {/* Tutaj będzie więcej informacji o użytkowniku */}
         </>
     );
 }

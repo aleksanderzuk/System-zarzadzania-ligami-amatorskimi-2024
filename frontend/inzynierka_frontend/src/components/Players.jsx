@@ -23,7 +23,7 @@ export default function Players() {
     return (
         <div className='marg'>
             <h1 className="text-center">Zawodnicy</h1>
-            <SearchBar setData={setData} page={'users'} setSearched={setSearched} />
+            <SearchBar setData={setData} page={'players'} setSearched={setSearched} />
             <div className='mt-4 container'>
                 {data.length !== 0 ? (
                     data.map((player) => (
@@ -36,7 +36,7 @@ export default function Players() {
                                     <strong>Pozycja:</strong> {convertPosition(player.position)}<br />
                                     <strong>Zespół:</strong> {player.team ? player.team.name : "Brak zespołu"}
                                 </p>
-                                <a href={`/player/${player.id}`} className="btn btn-primary">Zobacz szczegóły</a>
+                                <a href={`/players/${player.id}`} className="btn btn-primary">Zobacz szczegóły</a>
                             </div>
                         </div>
                     ))

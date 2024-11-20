@@ -10,7 +10,10 @@ import Leagues from './components/Leagues';
 import Teams from './components/Teams';
 import Players from './components/Players';
 import Profile from './components/Profile';
-import LeagueDetails from './components/LeagueDetails';
+import LeagueDetails from './components/details/LeagueDetails';
+import TeamDetails from './components/details/TeamDetails';
+import PlayerDetails from './components/details/PlayerDetails';
+import HomePage from './components/HomePage';
 
 import Cookies from 'js-cookie';
 
@@ -40,10 +43,13 @@ function App() {
           <Navbar /> 
           
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/leagues" element={<Leagues />} />
             <Route path="/leagues/:id" element={<LeagueDetails/>} />
             <Route path="/teams" element={<Teams />} />
+            <Route path="/teams/:id" element={<TeamDetails/>} />
             <Route path="/players" element={<Players />} />
+            <Route path="/players/:id" element={<PlayerDetails/>} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
           <button onClick={handleLogout} className="footer btn btn-danger">Wyloguj</button>
