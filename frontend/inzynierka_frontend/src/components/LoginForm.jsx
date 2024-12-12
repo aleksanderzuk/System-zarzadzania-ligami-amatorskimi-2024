@@ -43,18 +43,18 @@ export default function LoginForm ({ checkLogin, checkReg }){
             <form className='op border-0 rounded' onSubmit={handleSubmit}>
                 {wasWrong && <strong><p className='text-center text-danger'>Złe hasło/login</p></strong>}
                 <div className="mb-4">
-                    <input id="username" ref={login} name="username" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Login' />
+                    <input id="username" ref={login} name="username" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3 `} placeholder='Login' />
                 </div>
 
                 <div className="mb-4">
-                    <input id="password" ref={password} type="password" name="password" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Hasło' />
+                    <input id="password" ref={password} type="password" name="password" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3 `} placeholder='Hasło' />
                 </div>
                 <div className="d-flex justify-content-center narrow">
-                    <button type="submit" className="log">Zaloguj</button>
+                    <button type="submit" className="btn custom-btn log">Zaloguj</button>
                 </div>
                 
                 <div className=" mt-2 d-flex justify-content-center narrow">
-                    <button type='button' onClick={handleClick} className="log">Nie masz konta?</button>
+                    <button type='button' onClick={handleClick} className="btn custom-btn log">Nie masz konta?</button>
                 </div>
             </form>
             

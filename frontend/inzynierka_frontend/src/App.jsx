@@ -22,10 +22,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(token);
   const [isRegistered, setIsRegistered] = useState(true);
 
-  function handleLogout() {
-    Cookies.remove('session');
-    location.reload(); // wylogowanie i odświeżenie strony
-  }
+  
 
   return (
     <Router>
@@ -52,7 +49,7 @@ function App() {
             <Route path="/players/:id" element={<PlayerDetails/>} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
-          <button onClick={handleLogout} className="footer btn btn-danger">Wyloguj</button>
+          
         </>
       )}
     </Router>

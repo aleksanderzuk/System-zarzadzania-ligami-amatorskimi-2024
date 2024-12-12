@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-  background: radial-gradient(lightblue, aquamarine);
+  background: radial-gradient(rgb(1, 82, 100),rgb(2, 122, 116));
   min-height: 50vh;
 }
 
@@ -62,21 +62,13 @@ input.invalid:focus{
   
 }
 
-.log{
-  border: none; 
-  border-radius: .5rem;
-  font-size: 1.1rem;
-  background: radial-gradient(rgb(81, 204, 132), darkturquoise);
-  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 2px 6px 2px 6px;
 
-}
 
 
 .navbar{
-  background-color: #008080;
+  background-color: rgb(0, 56, 68);
   border: none;
-  box-shadow:0 4px 8px 0 #008080, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:0 4px 8px 0 rgb(0, 56, 68), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2px 6px 2px 6px; 
 }
 
@@ -92,12 +84,324 @@ input.invalid:focus{
 }
 
 .footer {
-  position: fixed; 
+  position: relative; 
   bottom: 0;  
-  left: 50%;
+  left: 0;
 }
 
 .pos-fix{
   margin-left:40px;
 }
 
+.result-modal {
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: #d7fcf8;
+  width: 500px;
+}
+
+.result-modal::backdrop {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.result-modal h2 {
+  font-family: 'Handjet', monospace;
+  margin: 0 0 0.25rem 0;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.result-modal progress {
+  width: 100%;
+  height: 1.5rem;
+  margin: 0;
+  accent-color: #46cebe;
+}
+
+.result-modal p strong{
+  color: #10655b;
+}
+
+.result-modal form {
+  text-align: right;
+}
+
+.result-modal button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #12352f;
+  color: #edfcfa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  height:47px;
+  width:120px;
+
+}
+
+.result-modal button:hover {
+  background: #051715;
+}
+
+.navigator{
+  background: none;
+  border: none; 
+  font-size: 30px;
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  border-radius: 1000px;
+  transition: 0.7s;
+}   
+.navigator:hover{
+  background: rgba(0, 0, 0, 0.19);
+
+}
+
+.page{
+  display:flex;
+  align-items: center;
+  color: #329aaf !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7); /* cień w jasnym kolorze */
+
+}
+
+
+
+
+.head-text {
+  color: #0d424c !important; /* ciemny kolor na jasnym tle strony */
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* cień w jasnym kolorze */
+  border-bottom: 4px solid #02746f; /* wyróżniająca kreska w kolorze średnim */
+  padding-bottom: 0.2em;
+}
+/* Custom Card Styling */
+.custom-card {
+  border: none; /* Remove default border */
+  border-radius: 10px; /* More pronounced rounded corners */
+  overflow: hidden; /* Prevent overflow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.custom-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+/* Button Improvements */
+.custom-btn {
+  background-color: #006C67 !important; /* Main button color */
+  color: white !important; /* White text */
+  border-radius: 5px; /* Smooth corners */
+  padding: 0.75rem 1rem; /* Padding for buttons */
+  text-transform: uppercase; /* Uppercase letters */
+  transition: background-color 0.3s ease; /* Transition for color */
+}
+
+.custom-btn:hover {
+  background-color: #005654; /* Darken button on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .head-text {
+    font-size: 2.5rem; /* Smaller heading on mobile */
+  }
+
+  .custom-btn {
+    width: 100%; /* Full width button on small screens */
+  }
+}
+
+/* League Title Styling */
+.league-title {
+  font-size: 1.5rem; /* Increased font size for emphasis */
+  color: #004d4d; /* A darker shade of your primary color */
+  margin-bottom: 0.5rem; /* Space below the title */
+  text-transform: uppercase; /* Uppercase for a bold look */
+  font-weight: bold; /* Make the title bold */
+}
+
+/* League Details Styling */
+.league-details {
+  font-size: 1rem; /* Standard font size */
+  color: #333; /* Dark gray for better readability */
+  line-height: 1.5; /* Increase line height for better spacing */
+}
+
+.league-details strong {
+  color: #006C67; /* Use your primary color for strong text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .league-title {
+    font-size: 1.25rem; /* Smaller title on mobile */
+  }
+
+  .league-details {
+    font-size: 0.9rem; /* Slightly smaller details on mobile */
+  }
+}
+
+.results {
+  background-color: rgba(238, 238, 238, 0.7) !important; /* Light gray background with some transparency */
+  border-radius: 5px; /* Smooth corners */
+  padding: 0.6rem; /* Padding for spacing inside the element */
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Optional: Adjusting the background color on hover */
+.results:hover {
+  background-color: rgba(220, 220, 220, 0.9); /* Darken slightly on hover */
+}
+/* Kontener główny */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9); /* Lekko przezroczysty biały */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+}
+
+/* Styl powitalnej wiadomości */
+.welcome-text {
+  font-size: 2rem;
+  color: #18a1a1;
+}
+
+/* Sekcja lig */
+.leagues-section {
+  max-width: 400px; /* Ograniczenie szerokości sekcji */
+  margin: 0 auto; /* Wyśrodkowanie sekcji */
+  
+  padding: 1rem 1.5rem; /* Wewnętrzne odstępy */
+  border-radius: 8px; /* Zaokrąglone rogi */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+}
+
+/* Tytuł sekcji */
+.section-title {
+  font-size: 1.5rem; /* Większy rozmiar czcionki */
+  color: #006C67; /* Kolor przewodni */
+  text-align: center; /* Wyśrodkowanie tekstu */
+  margin-bottom: 1rem; /* Odstęp od listy */
+  text-transform: uppercase; /* Tekst wielkimi literami */
+  font-weight: bold;
+}
+
+/* Kontener listy */
+.leagues-list-container {
+  max-height: 200px; /* Ograniczenie wysokości */
+  overflow-y: auto; /* Pionowy pasek przewijania, jeśli lista jest długa */
+  padding: 0.5rem;
+
+}
+
+/* Lista lig */
+.leagues-list {
+  list-style-type: none; /* Usunięcie kropek listy */
+  padding: 0;
+  margin: 0;
+}
+
+/* Elementy listy */
+.league-item {
+  margin-bottom: 0.5rem; /* Odstęp między elementami */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.league-item:hover {
+  transform: translateX(5px); /* Subtelne przesunięcie na hover */
+  background-color: rgba(0, 108, 103, 0.1); /* Podświetlenie elementu */
+  border-radius: 4px;
+}
+
+/* Link do ligi */
+.league-link {
+  text-decoration: none; /* Usunięcie podkreślenia */
+  color: #004d4d; /* Przyciemniony kolor przewodni */
+  font-weight: bold; /* Pogrubienie tekstu */
+}
+
+.league-link:hover {
+  color: #006C67; /* Podświetlenie linku */
+}
+
+/* Wiadomość o braku lig */
+.no-leagues-message {
+  text-align: center; /* Wyśrodkowanie wiadomości */
+  color: #888; /* Przygaszony kolor */
+  font-size: 1rem;
+  font-style: italic; /* Kursywa */
+}
+
+
+/* Linki zespołu i lig */
+.team-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #329aaf;
+  transition: color 0.3s ease;
+}
+
+.team-link:hover, .league-link:hover {
+  color: #005654;
+}
+
+.log{
+  font-size:0.9rem !important;
+}
+
+#choices {
+  margin: 3rem auto;
+}
+
+#choices h2 {
+  text-align: left;
+}
+
+#choices menu {
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+#choices menu button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #0d424c;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.7);
+}
+
+#choices menu button:hover {
+  background-color: #0d424c;
+  color: #ebe7ef;
+}
+
+#choices menu button.active {
+  background-color: #0d424c;
+  color: #ebe7ef;
+}

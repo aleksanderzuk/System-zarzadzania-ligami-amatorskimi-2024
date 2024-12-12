@@ -16,5 +16,6 @@ class User(AbstractUser):
     surname = models.CharField(max_length=25, blank=False, default='')
     position = models.CharField(choices=position_choice, null=True, blank=True, max_length=2)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players', blank=True, null=True)
+    leagues_created = models.ForeignKey('leagues.League', on_delete=models.CASCADE, related_name='users_leagues', blank=True, null=True)
     def __str__(self):
         return f"{self.name} {self.surname}"

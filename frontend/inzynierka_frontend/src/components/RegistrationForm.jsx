@@ -43,24 +43,24 @@ export default function RegistrationForm( { checkReg }){
         <section className="container marg responsive-width">
             <form className='op border-0 rounded' onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <input id="username" ref={login} name="username" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Nazwa użytkownika' />
+                    <input id="username" ref={login} name="username" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3`} placeholder='Nazwa użytkownika' />
                 </div>
 
                 <div className="mb-4">
-                    <input id="password" ref={password} type="password" name="password" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Hasło' />
+                    <input id="password" ref={password} type="password" name="password" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3`} placeholder='Hasło' />
                 </div>
 
                 <div className="mb-4">
-                    <input id="first_name" ref={first_name} name="first_name" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Imię' />
+                    <input id="first_name" ref={first_name} name="first_name" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3`} placeholder='Imię' />
                 </div>
 
                 <div className="mb-4">
-                    <input id="last_name" ref={last_name} name="last_name" className={`${wasWrong ? 'invalid' : undefined} form-control narrow mt-3`} placeholder='Nazwisko' />
+                    <input id="last_name" ref={last_name} name="last_name" className={`${wasWrong ? 'invalid' : 'results'} form-control narrow mt-3`} placeholder='Nazwisko' />
                 </div>
 
 
                 <div className="mb-4">
-                    <select id="position" ref={position} className="form-control narrow mt-3">
+                    <select id="position" ref={position} className="form-control narrow mt-3 results">
                     <option value="" disabled defaultValue hidden>Pozycja</option>
                         {position_list.map((pos, index) => (
                             <option key={index} value={pos}>{pos}</option>
@@ -71,11 +71,11 @@ export default function RegistrationForm( { checkReg }){
                 
 
                 <div className="d-flex justify-content-center narrow">
-                    <button type="submit" className="log">Zarejestruj</button>
+                    <button type="submit" className="log btn custom-btn">Zarejestruj</button>
                 </div>
 
                 <div className=" mt-2 d-flex justify-content-center narrow">
-                    <button type='button' onClick={handleClick} className="log">Masz już konto?</button>
+                    <button type='button' onClick={handleClick} className="log btn custom-btn">Masz już konto?</button>
                 </div>
 
             </form>

@@ -11,7 +11,7 @@ class Match(models.Model):
     match_date = models.DateTimeField()
     home_score = models.IntegerField(null=True, blank=True)
     away_score = models.IntegerField(null=True, blank=True)
-    status = models.CharField(max_length=20, default='scheduled')  # scheduled, completed, etc.
+
 
     def __str__(self):
         return f"{self.home_team} vs {self.away_team} on {self.match_date}"

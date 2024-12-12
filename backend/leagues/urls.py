@@ -7,4 +7,5 @@ router.register(r'leagues', LeagueViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('leagues/<int:pk>/assign_teams/', LeagueViewSet.as_view({'post': 'assign_teams'})),
 ]

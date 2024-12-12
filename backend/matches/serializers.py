@@ -19,5 +19,5 @@ class MatchSerializer(serializers.ModelSerializer):
             'id', 'league', 'league_id',
             'home_team', 'home_team_id',
             'away_team', 'away_team_id',
-            'match_date', 'home_score', 'away_score', 'status'
+            'match_date', 'home_score', 'away_score'
         ]
