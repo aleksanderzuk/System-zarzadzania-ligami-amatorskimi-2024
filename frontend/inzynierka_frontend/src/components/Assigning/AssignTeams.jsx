@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { getContent } from '../../http';
-import { debounce } from 'lodash'; // Importujemy debouncing z lodash
-import { FaSearch } from 'react-icons/fa';
+import { debounce } from 'lodash'; 
+
 import { assign } from '../../http';
 
 
 export default function AssignTeam({ openModal, closeModal, leagueId }) {
     const ref = useRef();
     const [searchQuery, setSearchQuery] = useState('');
-    const [teams, setTeams] = useState([]); // Wyniki wyszukiwania drużyn
-    const [selectedTeams, setSelectedTeams] = useState([]); // Drużyny dodane do ligi
+    const [teams, setTeams] = useState([]); 
+    const [selectedTeams, setSelectedTeams] = useState([]); 
     
 
     useEffect(()=>{
@@ -20,28 +20,31 @@ export default function AssignTeam({ openModal, closeModal, leagueId }) {
         }
     }, [openModal]);
 
-  // Funkcja do obsługi wyszukiwania drużyn
+  
     const handleSearch = debounce(async (query) => {
-        if (!query) return; // Jeśli puste zapytanie, nie wysyłaj zapytania do backendu
+        if (!query) return; 
         
         try {
         const results = await getContent('teams', query, '&not_assigned=true');
-        setTeams(results); // Ustawienie wyników wyszukiwania
+        const filteredResults = results.filter(
+            (team) => !selectedTeams.some((selected) => selected.id === team.id)
+        )
+        setTeams(filteredResults); 
         } catch (error) {
         console.error('Błąd przy ściąganiu drużyn:', error);
         } finally {
         
         }
-    }, 0); // Debounce ustawiony na 500ms
+    }, 0); 
 
-    // Funkcja obsługująca zmianę w polu wyszukiwania
+   
     const handleInputChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
-        handleSearch(query); // Wywołanie debounced search function
+        handleSearch(query); 
     };
 
-    // Funkcja dodawania drużyny do listy wybranych
+    
     const handleAddTeam = (team) => {
         if (!selectedTeams.includes(team)) {
         setSelectedTeams([...selectedTeams, team]);
@@ -50,11 +53,11 @@ export default function AssignTeam({ openModal, closeModal, leagueId }) {
 
     const handleSave = async () => {
         try {
-            // Wywołanie funkcji do przypisania drużyn do ligi
+            
             await assign(leagueId, selectedTeams.map(team => team.id), 'leagues', 'teams');
             console.log('Drużyny zostały przypisane do ligi');
             alert('Dodano drużyny do ligi');
-            closeModal(); // Zamknięcie modalu po zapisaniu
+            closeModal(); 
             window.location.reload(); 
             
 
@@ -64,7 +67,7 @@ export default function AssignTeam({ openModal, closeModal, leagueId }) {
         }
     };
 
-    // Funkcja usuwania drużyny z listy wybranych
+    
     const handleRemoveTeam = (teamId) => {
         setSelectedTeams(selectedTeams.filter((team) => team.id !== teamId));
     };
@@ -85,38 +88,38 @@ export default function AssignTeam({ openModal, closeModal, leagueId }) {
             </div>
         </form>
 
-        {/* Pokazujemy wyniki wyszukiwania */}
+        
         {teams.length===0 ? (
             <>
             </>
         ) : (
-            <ul>
+            <ul >
             {teams.slice(0,4).map((team) => (
-                <li key={team.id}>
-                <span>{team.name}</span>
-                <button type="button" onClick={() => handleAddTeam(team)}>
-                    Dodaj
-                </button>
+                <li className='d-flex justify-content-between align-items-center' key={team.id}>
+                    <h5 className='mt-4'>{team.name}</h5>
+                    <button type="button" onClick={() => handleAddTeam(team)}>
+                        Dodaj
+                    </button>
                 </li>
             ))}
             </ul>
         )}
 
-        {/* Lista wybranych drużyn */}
-        <h3>Wybrane drużyny:</h3>
+        
+        <h3 className='mt-4'>Wybrane drużyny:</h3>
         <ul>
             {selectedTeams.map((team) => (
-            <li key={team.id}>
-                <span>{team.name}</span>
+            <li className='d-flex justify-content-between align-items-center' key={team.id}>
+                <h5 className='mt-4'>{team.name}</h5>
                 <button type="button" onClick={() => handleRemoveTeam(team.id)}>
-                Usuń
+                    Usuń
                 </button>
             </li>
             ))}
         </ul>
 
-        {/* Przycisk "Zapisz" */}
-        <footer className="d-flex justify-content-between">
+        
+        <footer className="d-flex justify-content-between mt-4">
             <button type="button" onClick={closeModal}>
             Zamknij
             </button>

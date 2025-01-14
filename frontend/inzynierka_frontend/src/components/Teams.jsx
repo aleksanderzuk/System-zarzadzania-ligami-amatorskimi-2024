@@ -5,7 +5,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import Pagination from './Pagination.jsx'
 
 export default function Teams() {
-    const [data, setData] = useState([]);  // Zmieniamy na pustą tablicę
+    const [data, setData] = useState([]);  
     const [searched, setSearched] = useState(0); 
 
     const [modal, setModal] = useState(false);
@@ -14,7 +14,7 @@ export default function Teams() {
 
     function changePageLeft(){
         if(page!==0){
-            setPage(prevPage => prevPage-6); // liczby przy prevPage i w data.slice oznaczaja ile ma byc wyswietlanych elementow na stronie
+            setPage(prevPage => prevPage-6); 
             setActualPage(prevActualPage => prevActualPage-1);
         }
         

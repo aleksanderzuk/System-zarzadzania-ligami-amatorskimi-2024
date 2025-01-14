@@ -4,7 +4,7 @@ import Pagination from "./Pagination";
 
 
 export default function Players() {
-    const [data, setData] = useState([]); // Pusta tablica na początku
+    const [data, setData] = useState([]); 
     const [searched, setSearched] = useState(0);
 
     const [page, setPage] = useState(0);
@@ -12,7 +12,7 @@ export default function Players() {
 
     function changePageLeft(){
         if(page!==0){
-            setPage(prevPage => prevPage-6); // liczby przy prevPage i w data.slice oznaczaja ile ma byc wyswietlanych elementow na stronie
+            setPage(prevPage => prevPage-6); 
             setActualPage(prevActualPage => prevActualPage-1);
         }
         
@@ -36,7 +36,7 @@ export default function Players() {
             'pom': 'Pomocnik',
             'nap': 'Napastnik'
         };
-        return positionMap[position] || 'Nieznana pozycja';  // Jeśli nie znajdziesz skrótu, zwróci 'Nieznana pozycja'
+        return positionMap[position] || 'Nieznana pozycja';  
     }
     
     

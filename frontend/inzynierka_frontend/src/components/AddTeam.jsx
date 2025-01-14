@@ -36,7 +36,8 @@ export default function AddTeam({ openModal, closeModal,  }){
                 
             } catch(error){
                 console.error('Error', error.message);
-                alert('Zespół o podanej nazwie już istnieje, albo nazwa jest zbyt długa')
+                // alert('Zespół o podanej nazwie już istnieje, nazwa jest zbyt długa, lub masz już stworzony zespół')
+                alert(error.message);
             } finally {
                 event.target.reset();
             }
@@ -45,7 +46,7 @@ export default function AddTeam({ openModal, closeModal,  }){
 
     return(
         <dialog ref={ref} className='result-modal'>
-            <h1 className='text-center mb-4'>Dodaj ligę</h1>
+            <h1 className='text-center mb-4'>Dodaj zespół</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input

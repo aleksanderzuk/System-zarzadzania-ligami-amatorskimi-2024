@@ -6,6 +6,7 @@ from .filters import LeagueFilter
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from teams.models import Team
+from django.db import transaction
 
 class LeagueViewSet(viewsets.ModelViewSet):
     queryset = League.objects.all()
@@ -21,10 +22,8 @@ class LeagueViewSet(viewsets.ModelViewSet):
 
         league = self.get_object()
 
-        # Lista zespołów, które chcemy przypisać do ligi
         teams_data = request.data.get('teams', [])
 
-        # Iterujemy przez zespoły i przypisujemy im ligę
         if not teams_data:
             return Response({"detail": "No teams provided"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -33,10 +32,22 @@ class LeagueViewSet(viewsets.ModelViewSet):
         if teams.count() != len(teams_data):
             return Response({"detail": "Some teams do not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Przypisujemy wybraną ligę do zespołów
         for team in teams:
             team.league = league
             team.save()
 
-        # Serializacja i zwrócenie odpowiedzi
         return Response({"detail": "Teams successfully assigned to league"}, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['delete'])
+    def delete_league(self, request, pk=None):
+        league = self.get_object()
+
+        if league.created_by != request.user:
+            return Response({"detail": "You do not have permission to delete this league."},
+                            status=status.HTTP_403_FORBIDDEN)
+
+        with transaction.atomic():
+            league.delete()
+
+        return Response({"detail": "League and its matches were successfully deleted."},
+                        status=status.HTTP_204_NO_CONTENT)

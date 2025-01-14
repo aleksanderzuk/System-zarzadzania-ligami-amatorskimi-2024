@@ -18,12 +18,11 @@ export default function EditScore({ matchId, open, handleClose, currentHomeScore
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Wywołujemy funkcję patchującą wynik meczu
         try {
             const data = await patchMatchScore(matchId, { home_score: homeScore, away_score: awayScore });
-            updateMatches(data);  // Aktualizowanie listy meczów na stronie
-            handleClose();  // Zamykamy modal
-            window.location.reload(); // To powoduje odświeżenie całej strony
+            updateMatches(data);
+            handleClose();
+            
         } catch (error) {
             console.error('Błąd przy edytowaniu wyniku:', error);
         }
@@ -31,35 +30,37 @@ export default function EditScore({ matchId, open, handleClose, currentHomeScore
 
     return (
         <dialog ref={ref} className='result-modal'>
-            <h1 className='text-center mb-4'>Edytuj wynik meczu</h1>
-            <form onSubmit={handleSubmit}>
-                <div >
-                    <h1 className='text-center'>{homeTeam}</h1>
+            <h2 className='head-text text-center'>Edytuj wynik meczu</h2>
+            <form onSubmit={handleSubmit} className="score-form">
+                <div className="team-score-section">
+                    <label className='score-label' htmlFor="homeScore">{homeTeam}</label>
                     <input
                         type="number"
                         min='0'
+                        id="homeScore"
                         value={homeScore}
                         onChange={(e) => setHomeScore(e.target.value)}
-                        className="form-control"
-                        placeholder="Wprowadź wynik gospodarza"
+                        className="form-control score-input"
+                        placeholder="Wynik gospodarza"
                         required
                     />
                 </div>
-                <div>
-                    <h1 className='text-center'>{awayTeam}</h1>
+                <div className="team-score-section">
+                    <label className='score-label' htmlFor="awayScore">{awayTeam}</label>
                     <input
                         type="number"
                         min='0'
+                        id="awayScore"
                         value={awayScore}
                         onChange={(e) => setAwayScore(e.target.value)}
-                        className="form-control"
-                        placeholder="Wprowadź wynik gościa"
+                        className="form-control score-input"
+                        placeholder="Wynik gościa"
                         required
                     />
                 </div>
-                <footer className='d-flex justify-content-between'>
-                    <button type='button' onClick={handleClose}> Zamknij </button>
-                    <button type='submit'>Zatwierdź </button>
+                <footer className='d-flex justify-content-between mt-3'>
+                    <button type='button' onClick={handleClose} className="btn custom-btn" style={{ backgroundColor: '#12352f' }}>Zamknij</button>
+                    <button type='submit' className="btn custom-btn">Zatwierdź</button>
                 </footer>
             </form>
         </dialog>

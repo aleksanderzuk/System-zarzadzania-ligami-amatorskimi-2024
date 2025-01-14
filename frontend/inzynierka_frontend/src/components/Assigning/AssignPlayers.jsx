@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { getContent } from '../../http';
-import { debounce } from 'lodash'; // Importujemy debouncing z lodash
-import { FaSearch } from 'react-icons/fa';
+import { debounce } from 'lodash'; 
+
 import { assign } from '../../http';
 
 export default function AssignPlayer({ openModal, closeModal, teamId }) {
     const ref = useRef();
     const [searchQuery, setSearchQuery] = useState('');
-    const [players, setPlayers] = useState([]); // Wyniki wyszukiwania drużyn
-    const [selectedPlayers, setSelectedPlayers] = useState([]); // Drużyny dodane do ligi
+    const [players, setPlayers] = useState([]); 
+    const [selectedPlayers, setSelectedPlayers] = useState([]); 
     
 
     useEffect(()=>{
@@ -19,28 +19,28 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
         }
     }, [openModal]);
 
-  // Funkcja do obsługi wyszukiwania drużyn
+
     const handleSearch = debounce(async (query) => {
-        if (!query) return; // Jeśli puste zapytanie, nie wysyłaj zapytania do backendu
+        if (!query) return;
         
         try {
             const results = await getContent('players', query, '&not_assigned=true');
-            setPlayers(results); // Ustawienie wyników wyszukiwania
+            setPlayers(results); 
         } catch (error) {
             console.error('Błąd przy ściąganiu zawodników:', error);
         } finally {
         
         }
-    }, 0); // Debounce ustawiony na 500ms
+    }, 0); 
 
-    // Funkcja obsługująca zmianę w polu wyszukiwania
+    
     const handleInputChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
-        handleSearch(query); // Wywołanie debounced search function
+        handleSearch(query); 
     };
 
-    // Funkcja dodawania drużyny do listy wybranych
+   
     const handleAddPlayer = (player) => {
         if (!selectedPlayers.includes(player)) {
         setSelectedPlayers([...selectedPlayers, player]);
@@ -49,11 +49,11 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
 
     const handleSave = async () => {
         try {
-            // Wywołanie funkcji do przypisania drużyn do ligi
+            
             await assign(teamId, selectedPlayers.map(team => team.id), 'teams', 'players');
             console.log('Zawodnicy zostali przypisani do drużyny');
             alert('Dodano zawodników do zespołu')
-            closeModal(); // Zamknięcie modalu po zapisaniu
+            closeModal(); 
             window.location.reload();
         } catch (error) {
             console.error('Błąd przy przypisywaniu zawodników:', error.message);
@@ -61,7 +61,7 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
         }
     };
 
-    // Funkcja usuwania drużyny z listy wybranych
+    
     const handleRemovePlayer = (playerId) => {
         setSelectedPlayers(selectedPlayers.filter((player) => player.id !== playerId));
     };
@@ -89,7 +89,7 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
             ) : (
                 <ul>
                 {players.slice(0,4).map((player) => (
-                    <li key={player.id}>
+                    <li className='d-flex justify-content-between align-items-center' key={player.id}>
                     <span>{player.username}</span>
                     <button type="button" onClick={() => handleAddPlayer(player)}>
                         Dodaj
@@ -100,10 +100,10 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
             )}
 
             
-            <h3>Wybrani zawodnicy:</h3>
+            <h3 className='mt-4'>Wybrani zawodnicy:</h3>
             <ul>
                 {selectedPlayers.map((player) => (
-                <li key={player.id}>
+                <li className='d-flex justify-content-between align-items-center' key={player.id}>
                     <span>{player.name}</span>
                     <button type="button" onClick={() => handleRemovePlayer(player.id)}>
                     Usuń
@@ -113,7 +113,7 @@ export default function AssignPlayer({ openModal, closeModal, teamId }) {
             </ul>
 
             
-            <footer className="d-flex justify-content-between">
+            <footer className="d-flex justify-content-between mt-4">
                 <button type="button" onClick={closeModal}>
                 Zamknij
                 </button>

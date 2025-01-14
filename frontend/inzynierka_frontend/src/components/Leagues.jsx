@@ -4,13 +4,15 @@ import AddLeague from "./AddLeague";
 import { IoIosAddCircle } from "react-icons/io";
 import Pagination from "./Pagination";
 
+import { useParams } from 'react-router-dom';
+
 export default function Leagues() {
     const [data, setData] = useState([]); 
     const [searched, setSearched] = useState(0); 
     const [modal, setModal] = useState(false);
     const [page, setPage] = useState(0);
     const [actualPage, setActualPage] = useState(1);
-
+    
     function changePageLeft(){
         if(page!==0){
             setPage(prevPage => prevPage-6); // liczby przy prevPage i w data.slice oznaczaja ile ma byc wyswietlanych elementow na stronie
@@ -30,6 +32,7 @@ export default function Leagues() {
         setModal(true);
     }
 
+    
     
 
     console.log(data); 
